@@ -1,24 +1,21 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { getDatabaseConfig } from './config/database.config';
+import { ConfigModule } from '@nestjs/config';
+import { SupabaseModule } from './modules/supabase/supabase.module';
+import { PostsModule } from './modules/posts/posts.module';
 import { UserModule } from './modules/user/user.module';
-import { PostModule } from './modules/post/post.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true, // 전역 모듈로 설정
+      isGlobal: true,
     }),
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      useFactory: getDatabaseConfig,
-      inject: [ConfigService],
-    }),
+    SupabaseModule,
+    PostsModule,
     UserModule,
-    PostModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

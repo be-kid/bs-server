@@ -6,7 +6,7 @@ Brain Spaghetti
 포스팅 내용들을 토대로 유저를 나타내는 간략한 문장을 AI로 만들어주기
 ex. 사는게 너무 힘든 개발자
 
-NestJS + MySQL + AI 등 사용 예정
+NestJS + Supabase + AI 등 사용 예정
 
 기능 / API 목록
 USER 관련
